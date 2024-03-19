@@ -1,3 +1,7 @@
 <style scoped lang="scss"></style>
-<template></template>
+<template>
+     <div>
+        <ProductDetail />
+    </div>
+</template>
 <script setup lang="ts"></script>

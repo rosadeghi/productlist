@@ -16,9 +16,9 @@
         <!-- <SharedCategories @building="categouryList" @treatment="categouryList" @industrial="categouryList" /> -->
       </div>
     </div>
-    <div class=" col-span-3 mr-2">
+    <div class="col-span-3 mr-2">
       <div class="card">
-        <h2>فیلترهای اعمال شده</h2>
+        <h4>فیلترهای اعمال شده</h4>
         <div>
           <div class="chips">
             <label for="">دو لنگه</label>
@@ -32,10 +32,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
 </template>
 <script lang="ts" setup>

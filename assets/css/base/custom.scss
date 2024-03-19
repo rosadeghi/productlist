@@ -31,6 +31,11 @@ html {
   }
 
   h1 {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: right;
+  }
+  h2{
     font-size: 14px;
     font-weight: 700;
     text-align: right;
@@ -38,17 +43,16 @@ html {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 180px;
-    background-color: #fff;
   }
-  h2{
+  h3{
     font-size: 14px;
     font-weight: 500;
   }
-  h3{
+  h4{
     font-size: 13px;
     line-height: 16px;
     font-weight: 500;
-    padding-bottom: 15px;
+    padding-bottom: 15px; 
   }
   .button-o {
     border-radius: 16px;
@@ -95,4 +99,22 @@ html {
     background-color: #fff;
     height:40px
   }
+}
+.title-wrapper{
+  border-radius: 4px 16px 16px 4px;
+  background-color: #F5F7FA;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #57728E;
+  text-align: right;
+}
+.description-wrapper{
+  border-radius: 16px 4px 4px 16px;
+  background-color: #F5F7FA;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #30445B;
+  text-align: right;
 }
