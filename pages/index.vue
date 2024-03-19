@@ -32,7 +32,6 @@
       </div>
     </div>
   </div>
-
 </template>
 <script lang="ts" setup>
 import type { productDTO } from '~/types/productDTO';
@@ -40,7 +39,7 @@ import type { productDTO } from '~/types/productDTO';
 
 definePageMeta({
   path: '/',
-  // layout: 'default'
+  layout: "default"
 })
 
 const productList = ref([
