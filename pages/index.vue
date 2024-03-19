@@ -1,18 +1,18 @@
 <style lang="scss" scoped></style>
 <template>
-  <div class="grid grid-cols-4 px-20 py-10">
+  <div class="grid grid-cols-4">
     <div class="col-span-1 ml-2">
       <div class="mb-2">
         <SharedSearch />
       </div>
-      <div class="my-2">
+      <div class="my-3">
         <SharedAvailabelFilter />
       </div>
-      <div class="my-2">
+      <div class="my-3">
         <SharedSortFilter @descCount="sortrList" @ascCount="sortrList" @descLevel="sortrList" @ascLevel="sortrList">
         </SharedSortFilter>
       </div>
-      <div class="my-2">
+      <div class="my-3">
         <SharedCategories />
       </div>
     </div>

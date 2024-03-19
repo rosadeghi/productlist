@@ -12,7 +12,7 @@
                 <small class="">قیمت</small>
             </div>
             <div class="col-span-3 mr-2 description-wrapper">
-                <strong class="">{{product.price}}</strong>
+                <strong class="">{{product?.price}}</strong>
             </div>
         </div>
         <div class="grid grid-cols-4 my-2">
@@ -20,7 +20,7 @@
                 <small class="">توضیحات </small>
             </div>
             <div class="col-span-3 mr-2 description-wrapper">
-                <strong class="">{{product.description}}</strong>
+                <strong class="">{{product?.description}}</strong>
             </div>
         </div>
         <div class="grid grid-cols-4 my-2">
@@ -28,7 +28,7 @@
                 <small class="">دسته بندی</small>
             </div>
             <div class="col-span-3 mr-2 description-wrapper">
-                <strong class="">{{product.category}}</strong>
+                <strong class="">{{product?.category}}</strong>
             </div>
         </div>
         <div class="grid grid-cols-4 my-2">
@@ -36,7 +36,7 @@
                 <small class="">رتبه</small>
             </div>
             <div class="col-span-3 mr-2 description-wrapper">
-                <strong class="">{{product.rating.rate}}</strong>
+                <strong class="">{{product?.rating?.rate}}</strong>
             </div>
         </div>
         <div class="grid grid-cols-4 my-2">
@@ -44,7 +44,7 @@
                 <small class="">تعداد</small>
             </div>
             <div class="col-span-3 mr-2 description-wrapper">
-                <strong class="">{{product.rating.count}}</strong>
+                <strong class="">{{product?.rating?.count}}</strong>
             </div>
         </div>
     </div>
