@@ -9,11 +9,10 @@
         <SharedAvailabelFilter />
       </div>
       <div class="my-2">
-        <SharedOrderingFilter @descCount="sortrList" @ascCount="sortrList" @descLevel="sortrList"
-          @ascLevel="sortrList" />
+        <SharedSortFilter></SharedSortFilter>
       </div>
       <div class="my-2">
-        <SharedCategories  />
+        <SharedCategories />
       </div>
     </div>
     <div class="col-span-3 mr-2">
@@ -35,6 +34,7 @@
 </template>
 <script lang="ts" setup>
 import type { productDTO } from '~/types/productDTO';
+import type { productParametr } from '~/types/productParametr';
 
 
 definePageMeta({
@@ -42,7 +42,7 @@ definePageMeta({
   layout: "default"
 })
 
-const products=ref([] as productDTO[])
+const products = ref([] as productDTO[])
 
 
 const list = ref(products.value as productDTO[]);
@@ -87,9 +87,6 @@ const categouryList = (filterItem: string) => {
 
   list.value = [...catList]
 }
-
-
-
 const test = ["test1", "test2", "test3"]
 const testFunc = (filterlist: string[], list: string[]) => {
   return list.map(item => {
@@ -105,7 +102,11 @@ if (process.client) {
 }
 
 async function _getProducts() {
-  const { data } = await getProducts()
+  const req = {
+    sort: 'desc',
+    category: "women's clothing",
+  } as productParametr
+  const { data } = await getProducts(req)
   products.value = data
 }
 
