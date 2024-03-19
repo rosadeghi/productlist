@@ -9,7 +9,8 @@
         <SharedAvailabelFilter />
       </div>
       <div class="my-2">
-        <SharedSortFilter></SharedSortFilter>
+        <SharedSortFilter @descCount="sortrList" @ascCount="sortrList" @descLevel="sortrList" @ascLevel="sortrList">
+        </SharedSortFilter>
       </div>
       <div class="my-2">
         <SharedCategories />
@@ -25,7 +26,7 @@
         </div>
       </div>
       <div class="grid grid-cols-3 mt-3">
-        <div class="mx-2" v-for="product in products " :key="product.id">
+        <div class="mx-2 my-2" v-for="product in products " :key="product.id">
           <ProductItem :data="product" />
         </div>
       </div>
@@ -51,34 +52,49 @@ const list = ref(products.value as productDTO[]);
 const sortModule = (filterItem: string, list: productDTO[]) => {
   switch (filterItem) {
     case "asc":
-      return list.sort((a: any, b: any) => {
-        return a.stock - b.stock
-      })
-
+      return list.map(i => {
+        return i.rating.count
+      }).
+        sort((a: any, b: any) => {
+          return a - b
+        })
     case "desc":
-      return list.sort((a: any, b: any) => {
+      return list.map(i => {
+        return i.rating.count
+      }).sort((a: any, b: any) => {
         return b.stock - a.stock
       })
-
+    case "upRate":
+      return list.map(i => {
+        return i.rating.rate
+      }).sort((a: any, b: any) => {
+        return a.stock - b.stock
+      })
+    case "lowRate":
+      return list.map(i => {
+        return i.rating.rate
+      }).sort((a: any, b: any) => {
+        return b.stock - a.stock
+      })
     default:
       return list
   }
 }
 const categouryModule = (filterItem: string, list: productDTO[]) => {
-  return list.filter(item => item.categories.name === filterItem)
+  return list.filter(item => item.category === filterItem)
 }
 
 // Filtered Response Data
-const sortrList = (filtredItem: string) => {
+async function sortrList(filtredItem: string) {
+  const req = {
+    sort: filtredItem,
+  } as productParametr
+  const { data } = await getProducts(req)
+  products.value = data
   const sortList = sortModule(filtredItem, products.value);
-  console.log("sortListsortListsortListsortList", sortList);
-
-  // const catList = categouryModule(filtredItem, products);
-
   list.value = [...sortList]
-  console.log("listlistlistlistlistlistlist", list);
-
 }
+
 const categouryList = (filterItem: string) => {
   console.log("filterItemfilterItemfilterItem", filterItem);
 

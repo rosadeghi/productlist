@@ -1,7 +1,8 @@
 <style lang="scss" scoped></style>
 <template>
     <div class="card">
-        <img :src="data?.image" alt="">
+        <div class="image-small"
+        :style="`background-image: url('${data.image}')`"></div>
         <h4 class="my-3">{{ data.title }}</h4>
         <p>{{ data.rating.count }}</p>
         <p>{{ data.rating.rate }}</p>
