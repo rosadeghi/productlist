@@ -2,7 +2,8 @@
 <template>
      <div class="card">
         <h2>دسته بندی</h2>
-    <label v-for="category in categories" :key="category">
+        <div  class="my-2" v-for="category in categories" :key="category">
+          <label>
       <input
         type="checkbox"
         :value="category"
@@ -10,6 +11,8 @@
       />
       {{ category }}
     </label>
+        </div>
+   
     </div>
 
 </template>

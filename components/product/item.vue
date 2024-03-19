@@ -4,10 +4,10 @@
         <div class="image-small"
         :style="`background-image: url('${data.image}')`"></div>
         <h4 class="my-3">{{ data.title }}</h4>
-        <p>{{ data.rating.count }}</p>
+        <!-- <p>{{ data.rating.count }}</p>
         <p>{{ data.rating.rate }}</p>
         <p>{{ data.category }}</p>
-        <p>{{ data.price }}</p>
+        <p>{{ data.price }}</p> -->
         <!-- <p>{{ data.categories.name }}</p> -->
         <button class="button-o" @click="details(data.id)">مشاهده جزییات
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red"

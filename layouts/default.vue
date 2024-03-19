@@ -10,7 +10,6 @@
             <slot />
         </div>
         <div class="mob-footer">
-            sds
             <SharedFooter />
         </div>
     </div>
