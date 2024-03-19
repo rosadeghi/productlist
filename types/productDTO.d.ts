@@ -1,11 +1,13 @@
 export interface productDTO {
-    id:number
-    title:string
-    imageUrl:string
+    category:string
     description:string
-    stock:number
-    categories:categoryDTO
+    id:number
+    image:string
+    price:string
+    rating:rating
+    title:string
 }
-export interface categoryDTO{
-    name:string
+export interface rating{
+   count:number
+   rate:string
 }

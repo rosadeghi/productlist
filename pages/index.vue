@@ -13,7 +13,7 @@
           @ascLevel="sortrList" />
       </div>
       <div class="my-2">
-        <!-- <SharedCategories @building="categouryList" @treatment="categouryList" @industrial="categouryList" /> -->
+        <SharedCategories  />
       </div>
     </div>
     <div class="col-span-3 mr-2">
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="grid grid-cols-3 mt-3">
-        <div class="mx-2" v-for="product in list " :key="product.id">
+        <div class="mx-2" v-for="product in products " :key="product.id">
           <ProductItem :data="product" />
         </div>
       </div>
@@ -42,58 +42,10 @@ definePageMeta({
   layout: "default"
 })
 
-const productList = ref([
-  {
-    id: 0,
-    title: 'test1',
-    imageUrl: 'image',
-    description: 'description2',
-    stock: 5,
-    categories: { name: 'مسکن و ساختمان' }
-  },
-  {
-    id: 1,
-    title: 'test1',
-    imageUrl: 'image',
-    description: 'description2',
-    stock: 0,
-    categories: { name: 'بهداشت و درمان' }
-  },
-  {
-    id: 2,
-    title: 'test1',
-    imageUrl: 'image',
-    description: 'description2',
-    stock: 9,
-    categories: { name: 'مسکن و ساختمان' }
-  },
-  {
-    id: 3,
-    title: 'test1',
-    imageUrl: 'image',
-    description: 'description2',
-    stock: 44,
-    categories: { name: 'صنعتی و کارخانه' }
-  },
-  {
-    id: 4,
-    title: 'test1',
-    imageUrl: 'image',
-    description: 'description2',
-    stock: 3,
-    categories: { name: 'صنعتی و کارخانه' }
-  },
-  {
-    id: 5,
-    title: 'test1',
-    imageUrl: 'image',
-    description: 'description2',
-    stock: 12,
-    categories: { name: 'صنعتی و کارخانه' }
-  },
-] as productDTO[])
+const products=ref([] as productDTO[])
 
-const list = ref(productList.value as productDTO[]);
+
+const list = ref(products.value as productDTO[]);
 
 // Filter Functions
 const sortModule = (filterItem: string, list: productDTO[]) => {
@@ -118,10 +70,10 @@ const categouryModule = (filterItem: string, list: productDTO[]) => {
 
 // Filtered Response Data
 const sortrList = (filtredItem: string) => {
-  const sortList = sortModule(filtredItem, productList.value);
+  const sortList = sortModule(filtredItem, products.value);
   console.log("sortListsortListsortListsortList", sortList);
 
-  // const catList = categouryModule(filtredItem, productList);
+  // const catList = categouryModule(filtredItem, products);
 
   list.value = [...sortList]
   console.log("listlistlistlistlistlistlist", list);
@@ -130,7 +82,7 @@ const sortrList = (filtredItem: string) => {
 const categouryList = (filterItem: string) => {
   console.log("filterItemfilterItemfilterItem", filterItem);
 
-  const catList = categouryModule(filterItem, productList.value);
+  const catList = categouryModule(filterItem, products.value);
   console.log(catList);
 
   list.value = [...catList]
@@ -148,5 +100,13 @@ const testFunc = (filterlist: string[], list: string[]) => {
 }
 
 const result = testFunc(test, [])
+if (process.client) {
+  _getProducts()
+}
+
+async function _getProducts() {
+  const { data } = await getProducts()
+  products.value = data
+}
 
 </script>
