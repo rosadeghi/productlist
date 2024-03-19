@@ -13,7 +13,7 @@
           @ascLevel="sortrList" />
       </div>
       <div class="my-2">
-        <SharedCategories @building="categouryList" @treatment="categouryList" @industrial="categouryList" />
+        <!-- <SharedCategories @building="categouryList" @treatment="categouryList" @industrial="categouryList" /> -->
       </div>
     </div>
     <div class=" col-span-3 mr-2">
@@ -39,7 +39,8 @@
 
 </template>
 <script lang="ts" setup>
-import type { productDTO } from '~/types/product';
+import type { productDTO } from '~/types/productDTO';
+
 
 definePageMeta({
   path: '/',
