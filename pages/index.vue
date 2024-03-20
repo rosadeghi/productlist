@@ -9,14 +9,14 @@
   <div class="grid grid-cols-4">
     <div class="col-span-1 ml-2">
       <div class="mb-2">
-        <SharedSearch  :data="products" @searchResult="searchResult"/>
+        <SharedSearch :data="products" @searchResult="searchResult" />
       </div>
       <div class="my-3">
         <SharedSortFilter @filter="sortrList">
         </SharedSortFilter>
       </div>
       <div class="my-3">
-        <SharedCategories />
+        <SharedCategories @categoryFilter="categouryList" />
       </div>
     </div>
     <div class="col-span-3 mr-2">
@@ -24,12 +24,12 @@
         <h3>فیلترهای اعمال شده</h3>
         <div>
           <div class="chips">
-            <label>{{filteredByTitle}} </label>
+            <label>{{ filteredByTitle }} </label>
           </div>
         </div>
       </div>
       <div class="grid grid-cols-3 mt-3">
-        <div class="mx-2 my-2" v-for="product in products " :key="product.id">
+        <div class="mx-2 my-2" v-for="product in list" :key="product.id">
           <ProductItem :data="product" />
         </div>
       </div>
@@ -55,56 +55,23 @@ const products = ref([] as productDTO[])
 const list = ref(products.value as productDTO[]);
 
 // SORTFILTE
-const sortModule = (filterItem: string, list: productDTO[]) => {
-  switch (filterItem) {
-    case "asc":
-      return list.map(i => {
-        return i.rating.count
-      }).
-        sort((a: any, b: any) => {
-          return a - b
-        })
-    case "desc":
-      return list.map(i => {
-        return i.rating.count
-      }).sort((a: any, b: any) => {
-        return b.stock - a.stock
-      })
-    case "upRate":
-      return list.map(i => {
-        return i.rating.rate
-      }).sort((a: any, b: any) => {
-        return a.stock - b.stock
-      })
-    case "lowRate":
-      return list.map(i => {
-        return i.rating.rate
-      }).sort((a: any, b: any) => {
-        return b.stock - a.stock
-      })
-    default:
-      return list
-  }
-}
 async function sortrList(filtredItem: string) {
   const req = {
     sort: filtredItem,
   } as productParametr
   const { data } = await getProducts(req)
-  products.value = data
-  const sortList = sortModule(filtredItem, products.value);
-  list.value = [...sortList]
+
+  list.value = [...data]
 }
 // END SORTFILTE
 
 
 
 // filteredByTitle
-const filteredByTitle=ref('')
-const searchResult = async (res: productDTO[]) =>{
-  console.log(res);
-  filteredByTitle.value=res[0]?.title
-  products.value=res
+const filteredByTitle = ref('')
+const searchResult = async (res: productDTO[]) => {
+  filteredByTitle.value = res[0]?.title
+  products.value = res
 }
 // END filteredByTitle
 
@@ -112,14 +79,15 @@ const searchResult = async (res: productDTO[]) =>{
 
 
 const categouryModule = (filterItem: string, list: productDTO[]) => {
-  return list.filter(item => item.category === filterItem)
-}
+  const keys = Object.values(filterItem);
+  const flatTest = keys.flatMap((node) => {
+    return list.filter(i => i.category.includes(node));
+  });
+  return flatTest;
+};
+
 const categouryList = (filterItem: string) => {
-  console.log("filterItemfilterItemfilterItem", filterItem);
-
   const catList = categouryModule(filterItem, products.value);
-  console.log(catList);
-
   list.value = [...catList]
 }
 
@@ -130,6 +98,9 @@ async function _getProducts() {
   } as productParametr
   const { data } = await getProducts(req)
   products.value = data
+  if (data) {
+    list.value = products.value
+  }
 }
 
 

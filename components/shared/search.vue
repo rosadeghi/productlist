@@ -2,14 +2,13 @@
 <template>
     <div class="card">
         <h4>فیلتر و جستجو</h4>
-        <input class="input mb-4" v-model="keyWord" @input="handleSearch" type="text">
+        <input class="input mb-4" v-model="keyWord" type="text">
         <button class="button" @click="search">جستجو</button>
     </div>
 </template>
 <script lang="ts" setup>
 import type { productDTO } from '~/types/productDTO';
 const emit = defineEmits(['searchResult'])
-
 const props = defineProps<{ data: productDTO[] }>()
 const product = props.data
 const keyWord = ref('')
@@ -17,9 +16,4 @@ const keyWord = ref('')
 const search = () => {
  emit('searchResult', product.filter(i => i.title.includes(keyWord.value)))
 }
-// const handleSearch = () => {
-//     debugger
-//   console.log('Search query:', keyWord.value);
-//   emit('searchResult', product.filter(i => i.title.includes(keyWord.value)))
-// };
 </script>

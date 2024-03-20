@@ -22,9 +22,14 @@ if (process.client) {
   _getCategories()
 }
 const categories =ref([] as string[])
+const emit = defineEmits(['categoryFilter'])
 
 async function _getCategories() {
   const { data } = await getCategories()
   categories.value = data
 }
+
+watch(() => selectedCategories.value, (newValue) => {
+    emit('categoryFilter', newValue)
+});
 </script>

@@ -22,7 +22,6 @@ import type { productDTO } from '~/types/productDTO';
 
 const router = useRouter()
 const props = defineProps<{ data: productDTO }>()
-console.log(props.data);
 
 const details = (value: any) => {
     router.push({
