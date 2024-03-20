@@ -151,3 +151,42 @@ h4 {
   font-size: 12px;
   font-weight: 500;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .padding-x{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .padding-x{
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .padding-x{
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .padding-x{
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .padding-x{
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}

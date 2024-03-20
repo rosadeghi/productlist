@@ -7,12 +7,14 @@
 </style>
 <template>
   <div class="grid grid-cols-4">
-    <div class="col-span-1 ml-2">
+    <div class="col-span-1">
+
+
       <div class="mb-2">
-        <SharedSearch :data="list" @searchResult="searchResult" />
+        <SharedSearch v-if="!isLoading" :data="list" @searchResult="searchResult" />
       </div>
       <div class="my-3">
-        <SharedSortFilter @filter="sortList">
+        <SharedSortFilter @filter="sortFilter">
         </SharedSortFilter>
       </div>
       <div class="my-3">
@@ -20,7 +22,7 @@
       </div>
     </div>
     <div class="col-span-3 mr-2">
-      <div class="card selected-filter">
+      <!-- <div class="card selected-filter">
         <h3>فیلترهای اعمال شده</h3>
         <div class="flex">
           <div class="chips mx-2">
@@ -33,9 +35,9 @@
             {{ categoryFilterItem }}
           </div>
         </div>
-      </div>
-      <div class="grid grid-cols-3 mt-3">
-        <div class="mx-2 my-2" v-for="product in list" :key="product.id">
+      </div> -->
+      <div class="grid grid-cols-3">
+        <div class="mx-2 mb-2" v-for="product in list" :key="product.id">
           <ProductItem :data="product" v-if="!isLoading" />
         </div>
         <div v-if="isLoading" class="flex items-center justify-center w-full h-full">
@@ -71,33 +73,26 @@ const products = ref([] as productDTO[])
 const list = ref(products.value as productDTO[]);
 
 // SORTFILTE
-
 const sortList = (filterItem: string, list: productDTO[]) => {
   switch (filterItem) {
-    case "asc":
-      return list.map(i => {
-        return i.rating.count
-      }).
-        sort((a: any, b: any) => {
-          return a - b
-        })
     case "desc":
-      return list.map(i => {
-        return i.rating.count
-      }).sort((a: any, b: any) => {
-        return b.stock - a.stock
+      return list.sort((a: any, b: any) => {
+          return a.rating.count - b.rating.count
+        })
+
+    case "asc":
+      return list.sort((a: any, b: any) => {
+        return b.rating.count - a.rating.count
       })
+
     case "upRate":
-      return list.map(i => {
-        return i.rating.rate
-      }).sort((a: any, b: any) => {
-        return a.stock - b.stock
+      return list.sort((a: any, b: any) => {
+        return a.rating.rate - b.rating.rate
       })
+
     case "lowRate":
-      return list.map(i => {
-        return i.rating.rate
-      }).sort((a: any, b: any) => {
-        return b.stock - a.stock
+      return list.sort((a: any, b: any) => {
+        return b.rating.rate - a.rating.rate
       })
     default:
       return list
@@ -109,9 +104,11 @@ async function sortFilter(filtredItem: string) {
   const req = {
     sort: filtredItem,
   } as productParametr
-  const { data } = await getProducts(req)
-  return sortList(filtredItem, data)
-  list.value = [...data]
+
+  const sortedItems = sortList(filtredItem, list.value)
+  console.log("sortedItemssortedItemssortedItemssortedItems", sortedItems);
+
+  list.value = sortedItems
 }
 // END SORTFILTE
 
@@ -122,7 +119,13 @@ const filteredByTitle = ref('')
 const searchResult = async (res: productDTO[]) => {
   debugger
   filteredByTitle.value = res[0]?.title
-  products.value = res
+  if (!!list.value.length) {
+    list.value = res
+  }
+  else {
+    list.value = products.value
+  }
+
 }
 // END filterByTitle
 

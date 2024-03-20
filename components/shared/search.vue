@@ -16,7 +16,7 @@ const product = props.data
 const keyWord = ref('')
 
 const search = () => {
-    console.log(product.filter(i => i.title.includes(keyWord.value)));
+console.log(product.filter(i => i.title.includes(keyWord.value)));
     
  emit('searchResult', product.filter(i => i.title.includes(keyWord.value)))
 }
