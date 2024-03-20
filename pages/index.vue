@@ -9,7 +9,7 @@
   <div class="grid grid-cols-4">
     <div class="col-span-1 ml-2">
       <div class="mb-2">
-        <SharedSearch />
+        <SharedSearch  :data="products" @searchResult="searchResult"/>
       </div>
       <div class="my-3">
         <SharedSortFilter @descCount="sortrList" @ascCount="sortrList" @descLevel="sortrList" @ascLevel="sortrList">
@@ -24,7 +24,7 @@
         <h3>فیلترهای اعمال شده</h3>
         <div>
           <div class="chips">
-            <label>دو لنگه</label>
+            <label>{{filteredByTitle}} </label>
           </div>
         </div>
       </div>
@@ -40,7 +40,6 @@
 import type { productDTO } from '~/types/productDTO';
 import type { productParametr } from '~/types/productParametr';
 
-debugger
 definePageMeta({
   path: '/',
   layout: "default"
@@ -127,6 +126,12 @@ async function _getProducts() {
   } as productParametr
   const { data } = await getProducts(req)
   products.value = data
+}
+const filteredByTitle=ref('')
+const searchResult = async (res: productDTO[]) =>{
+  console.log(res);
+  filteredByTitle.value=res[0]?.title
+  products.value=res
 }
 
 </script>
