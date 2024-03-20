@@ -9,7 +9,7 @@
         <div class="content px-[150px] py-[20px]">
             <slot />
         </div>
-        <div class="mob-footer">
+        <div>
             <SharedFooter />
         </div>
     </div>

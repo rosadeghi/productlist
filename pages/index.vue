@@ -1,12 +1,15 @@
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.selected-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>
 <template>
   <div class="grid grid-cols-4">
     <div class="col-span-1 ml-2">
       <div class="mb-2">
         <SharedSearch />
-      </div>
-      <div class="my-3">
-        <SharedAvailabelFilter />
       </div>
       <div class="my-3">
         <SharedSortFilter @descCount="sortrList" @ascCount="sortrList" @descLevel="sortrList" @ascLevel="sortrList">
@@ -17,11 +20,11 @@
       </div>
     </div>
     <div class="col-span-3 mr-2">
-      <div class="card">
-        <h4>فیلترهای اعمال شده</h4>
+      <div class="card selected-filter">
+        <h3>فیلترهای اعمال شده</h3>
         <div>
           <div class="chips">
-            <label for="">دو لنگه</label>
+            <label>دو لنگه</label>
           </div>
         </div>
       </div>
