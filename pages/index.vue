@@ -88,7 +88,12 @@ const categouryModule = (filterItem: string, list: productDTO[]) => {
 
 const categouryList = (filterItem: string) => {
   const catList = categouryModule(filterItem, products.value);
-  list.value = [...catList]
+  if(!!catList.length){
+    list.value = catList
+  }
+  else{
+    list.value=products.value
+  }
 }
 
 async function _getProducts() {
