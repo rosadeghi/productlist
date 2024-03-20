@@ -6,7 +6,7 @@
 <template>
     <div class="main">
         <SharedHeader />
-        <div class="content md:px-[150px] py-[20px] sm:px-[60px]">
+        <div class="content layout-padding-x py-[20px]">
             <slot />
         </div>
         <div>

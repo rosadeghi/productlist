@@ -21,6 +21,7 @@
 
     ul {
         line-height: 30px;
+        text-align: right;
 
         li {
             color: #30445B;
@@ -33,6 +34,9 @@
 .copy-right {
     height: 149px;
     background-color: #F8F9FC;
+    // display: flex;
+    align-items: center;
+    justify-content: center;
 
     .description {
         display: flex;
@@ -46,59 +50,80 @@
     }
 
 
-.images{
-    display: flex;
-    align-items: center;
-}
+    .images {
+        display: flex;
+        align-items: center;
+    }
 }
 </style>
 <template>
-    <div class="main-footer grid grid-cols-5">
-        <div class="col-span-2 description">
-            <span>هفت روز هفته از ۸ صبح تا ۱۲ شب پاسخگو هستیم</span>
-        </div>
-        <div class="col-span-1">
-            <h1>دسترسی سریع</h1>
-            <ul>
-                <li>درباره ما</li>
-                <li>بلاگ</li>
-                <li>تماس با ما</li>
-                <li>خدمات پس از فروش</li>
-            </ul>
-        </div>
-        <div class="col-span-1">
-            <h1>راهنمای سایت</h1>
-            <ul>
-                <li>قوانین و مقررات</li>
-                <li>دریافت مشاوره</li>
-                <li>انتقادات و پیشنهادات</li>
-            </ul>
-        </div>
-        <div class="col-span-1">
-            <h1>شبکه های اجتماعی</h1>
-            <ul>
-                <li>تلگرام</li>
-                <li>اینستاگرام</li>
-                <li>لینکدین</li>
-            </ul>
-        </div>
-    </div>
-    <div class="copy-right  grid grid-cols-4">
-        <div class="col-span-3 description">
-            <p>
-                تمامی حقوق مادی و معنوی این وبسایت متعلق به می‌باشد و هر گونه کپی برداری پیگرد قانونی دارد.
 
-            </p>
-            <div>
+    <!-- Footer container -->
+    <footer class="bg-zinc-50 text-center text-surface/75 dark:bg-neutral-700 dark:text-white/75 lg:text-left">
+        <!-- Main container div: holds the entire content of the footer, including four sections (TW Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
+        <div class="mx-6 py-10 text-center md:text-left main-footer">
+            <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <!-- TW Elements section -->
+                <div class="description">
+
+                    <span>هفت روز هفته از ۸ صبح تا ۱۲ شب پاسخگو هستیم</span>
+                </div>
+                <!-- Products section -->
+                <div>
+                    <h1>دسترسی سریع</h1>
+
+                    <ul>
+                        <li>درباره ما</li>
+                        <li>بلاگ</li>
+                        <li>تماس با ما</li>
+                        <li>خدمات پس از فروش</li>
+                    </ul>
+                </div>
+                <!-- Useful links section -->
+                <div>
+                    <h1>راهنمای سایت</h1>
+
+                    <ul>
+                        <li>قوانین و مقررات</li>
+                        <li>دریافت مشاوره</li>
+                        <li>انتقادات و پیشنهادات</li>
+                    </ul>
+                </div>
+                <!-- Contact section -->
+                <div>
+                    <h1>شبکه های اجتماعی</h1>
+
+                    <ul>
+                        <li>تلگرام</li>
+                        <li>اینستاگرام</li>
+                        <li>لینکدین</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--Copyright section-->
+        <div class="bg-black/5 p-6 text-center copy-right md:d-flex">
+            <div class="col-span-3 description">
+                <p>
+                    تمامی حقوق مادی و معنوی این وبسایت متعلق به می‌باشد و هر گونه کپی برداری پیگرد قانونی دارد.
+
+                </p>
+                <div>
+
+                </div>
+            </div>
+            <div class="col-span-1 images">
+
+                <img src="~/assets/img/img1.png" alt="">
+                <img src="~/assets/img/img2.png" alt="">
 
             </div>
         </div>
-        <div class="col-span-1 images">
-            
-                <img src="~/assets/img/img1.png" alt="">
-                <img src="~/assets/img/img2.png" alt="">
-          
-        </div>
-    </div>
+    </footer>
+
+
+
+
 </template>
 <script setup lang="ts"></script>

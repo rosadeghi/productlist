@@ -154,39 +154,60 @@ h4 {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .padding-x{
-    padding-left: 30px;
-    padding-right: 30px;
+  .layout-padding-x{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+header-padding-x{
+  padding-left: 40px;
+  padding-right: 40px;
 }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .padding-x{
-    padding-left: 60px;
-    padding-right: 60px;
+  .layout-padding-x{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .header-padding-x{
+    padding-left: 80px;
+    padding-right: 80px;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .padding-x{
-    padding-left: 60px;
-    padding-right: 60px;
+  .layout-padding-x{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .header-padding-x{
+    padding-left: 120px;
+    padding-right: 120px;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .padding-x{
-    padding-left: 150px;
-    padding-right: 150px;
+  .layout-padding-x{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .header-padding-x{
+    padding-left: 200px;
+    padding-right: 200px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .padding-x{
-    padding-left: 150px;
-    padding-right: 150px;
+  .layout-padding-x{
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+  .header-padding-x{
+    padding-left: 250px;
+    padding-right: 250px;
   }
 }

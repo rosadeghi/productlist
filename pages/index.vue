@@ -85,12 +85,12 @@ const sortList = (filterItem: string, list: productDTO[]) => {
         return b.rating.count - a.rating.count
       })
 
-    case "upRate":
+    case "lowRate":
       return list.sort((a: any, b: any) => {
         return a.rating.rate - b.rating.rate
       })
 
-    case "lowRate":
+    case "upRate":
       return list.sort((a: any, b: any) => {
         return b.rating.rate - a.rating.rate
       })
