@@ -40,7 +40,7 @@
 import type { productDTO } from '~/types/productDTO';
 import type { productParametr } from '~/types/productParametr';
 
-
+debugger
 definePageMeta({
   path: '/',
   layout: "default"
