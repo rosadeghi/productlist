@@ -12,7 +12,7 @@
         <SharedSearch  :data="products" @searchResult="searchResult"/>
       </div>
       <div class="my-3">
-        <SharedSortFilter @descCount="sortrList" @ascCount="sortrList" @descLevel="sortrList" @ascLevel="sortrList">
+        <SharedSortFilter @filter="sortrList">
         </SharedSortFilter>
       </div>
       <div class="my-3">
@@ -45,12 +45,16 @@ definePageMeta({
   layout: "default"
 })
 
+
+if (process.client) {
+  _getProducts()
+}
+
+
 const products = ref([] as productDTO[])
-
-
 const list = ref(products.value as productDTO[]);
 
-// Filter Functions
+// SORTFILTE
 const sortModule = (filterItem: string, list: productDTO[]) => {
   switch (filterItem) {
     case "asc":
@@ -82,11 +86,6 @@ const sortModule = (filterItem: string, list: productDTO[]) => {
       return list
   }
 }
-const categouryModule = (filterItem: string, list: productDTO[]) => {
-  return list.filter(item => item.category === filterItem)
-}
-
-// Filtered Response Data
 async function sortrList(filtredItem: string) {
   const req = {
     sort: filtredItem,
@@ -96,7 +95,25 @@ async function sortrList(filtredItem: string) {
   const sortList = sortModule(filtredItem, products.value);
   list.value = [...sortList]
 }
+// END SORTFILTE
 
+
+
+// filteredByTitle
+const filteredByTitle=ref('')
+const searchResult = async (res: productDTO[]) =>{
+  console.log(res);
+  filteredByTitle.value=res[0]?.title
+  products.value=res
+}
+// END filteredByTitle
+
+
+
+
+const categouryModule = (filterItem: string, list: productDTO[]) => {
+  return list.filter(item => item.category === filterItem)
+}
 const categouryList = (filterItem: string) => {
   console.log("filterItemfilterItemfilterItem", filterItem);
 
@@ -104,19 +121,6 @@ const categouryList = (filterItem: string) => {
   console.log(catList);
 
   list.value = [...catList]
-}
-const test = ["test1", "test2", "test3"]
-const testFunc = (filterlist: string[], list: string[]) => {
-  return list.map(item => {
-    return filterlist.map(node => {
-      return item === node
-    })
-  })
-}
-
-const result = testFunc(test, [])
-if (process.client) {
-  _getProducts()
 }
 
 async function _getProducts() {
@@ -127,11 +131,6 @@ async function _getProducts() {
   const { data } = await getProducts(req)
   products.value = data
 }
-const filteredByTitle=ref('')
-const searchResult = async (res: productDTO[]) =>{
-  console.log(res);
-  filteredByTitle.value=res[0]?.title
-  products.value=res
-}
+
 
 </script>
