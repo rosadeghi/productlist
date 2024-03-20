@@ -2,9 +2,6 @@
 <template>
     <div class="card">
         <h4>مرتب سازی </h4>
-
-
-
         <ul>
             <li>
                 <div class="flex items-center ps-3">

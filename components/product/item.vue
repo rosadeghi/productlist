@@ -4,8 +4,8 @@
         <div class="image-small"
         :style="`background-image: url('${data.image}')`"></div>
         <h4 class="my-3">{{ data.title }}</h4>
-        <p>{{ data.rating.count }}</p>
-        <p>{{ data.rating.rate }}</p>
+        <!-- <p>{{ data.rating.count }}</p>
+        <p>{{ data.rating.rate }}</p> -->
         <button class="button-o" @click="details(data.id)">مشاهده جزییات
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="red"
                 class="w-4 h-4">
@@ -16,10 +16,8 @@
 </template>
 <script lang="ts" setup>
 import type { productDTO } from '~/types/productDTO';
-
 const router = useRouter()
 const props = defineProps<{ data: productDTO }>()
-
 const details = (value: any) => {
     router.push({
         path: `/${value}`,

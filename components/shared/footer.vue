@@ -48,8 +48,6 @@
             text-align: center;
         }
     }
-
-
     .images {
         display: flex;
         align-items: center;
@@ -101,29 +99,20 @@
                 </div>
             </div>
         </div>
-
         <!--Copyright section-->
         <div class="bg-black/5 p-6 text-center copy-right md:d-flex">
             <div class="col-span-3 description">
                 <p>
                     تمامی حقوق مادی و معنوی این وبسایت متعلق به می‌باشد و هر گونه کپی برداری پیگرد قانونی دارد.
-
                 </p>
                 <div>
-
                 </div>
             </div>
             <div class="col-span-1 images">
-
                 <img src="~/assets/img/img1.png" alt="">
                 <img src="~/assets/img/img2.png" alt="">
-
             </div>
         </div>
     </footer>
-
-
-
-
 </template>
 <script setup lang="ts"></script>

@@ -8,8 +8,6 @@
 <template>
   <div class="grid grid-cols-4">
     <div class="col-span-1">
-
-
       <div class="mb-2">
         <SharedSearch v-if="!isLoading" :data="list" @searchResult="searchResult" />
       </div>
@@ -106,8 +104,6 @@ async function sortFilter(filtredItem: string) {
   } as productParametr
 
   const sortedItems = sortList(filtredItem, list.value)
-  console.log("sortedItemssortedItemssortedItemssortedItems", sortedItems);
-
   list.value = sortedItems
 }
 // END SORTFILTE
@@ -125,7 +121,6 @@ const searchResult = async (res: productDTO[]) => {
   else {
     list.value = products.value
   }
-
 }
 // END filterByTitle
 

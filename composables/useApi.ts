@@ -8,23 +8,6 @@ export async function useApi<T>(
   method: 'get' | 'get' = 'get'
 ) {
 
-
-  onMounted(() => {
-    ///
-    //const tokenLocal = process.client ? JSON.parse(localStorage.getItem('userState')!).token! : '' 
-    // let tokenLocal = ''
-    // tokenLocal = process.client && localStorage.getItem('userState') ? 
-    //     JSON.parse(localStorage.getItem('userState')!).token! : '';
-
-    // if (getToken?.value) {
-    //   token.value = getToken?.value
-    // //} else if (tokenLocal !== 'undefined') {
-    // } else {
-    //   token.value = tokenLocal as string
-    // }
-
-  })
-
   const headers = ref<{ [key: string]: string }>({
     // Authorization: 'JWT ' + token.value,
   })
