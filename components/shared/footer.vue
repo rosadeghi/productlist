@@ -1,39 +1,55 @@
 <style scoped lang="scss">
-.main-footer{
+.main-footer {
     background-color: #fff;
     padding: 50px 150px;
+
     // align-items: center;
-    .description{
+    .description {
         display: flex;
         align-items: center;
-        span{
+
+        span {
             font-size: 13px;
             font-weight: 500;
             color: #445A74;
         }
     }
-    h1{
+
+    h1 {
         margin-bottom: 20px;
     }
-    ul{
+
+    ul {
         line-height: 30px;
-        li{
+
+        li {
             color: #30445B;
             font-size: 13px;
             font-weight: 500px;
         }
     }
 }
-.copy-right{
+
+.copy-right {
     height: 149px;
     background-color: #F8F9FC;
+
+    .description {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            width: 464px;
+            text-align: center;
+        }
+    }
+
+
+.images{
     display: flex;
     align-items: center;
-    justify-content: center;
-    p{
-        width: 464px;
-        text-align: center;
-    }
+}
 }
 </style>
 <template>
@@ -68,7 +84,7 @@
         </div>
     </div>
     <div class="copy-right  grid grid-cols-4">
-        <div class="col-span-3">
+        <div class="col-span-3 description">
             <p>
                 تمامی حقوق مادی و معنوی این وبسایت متعلق به می‌باشد و هر گونه کپی برداری پیگرد قانونی دارد.
 
@@ -77,11 +93,11 @@
 
             </div>
         </div>
-        <div class="col-span-1">
-            <div>
-                <img src="./assets/img/img1.png" alt="">
-                <img src="./assets/img/img2.png" alt="">
-            </div>
+        <div class="col-span-1 images">
+            
+                <img src="~/assets/img/img1.png" alt="">
+                <img src="~/assets/img/img2.png" alt="">
+          
         </div>
     </div>
 </template>

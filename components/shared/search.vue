@@ -10,10 +10,14 @@
 import type { productDTO } from '~/types/productDTO';
 const emit = defineEmits(['searchResult'])
 const props = defineProps<{ data: productDTO[] }>()
+console.log(props.data);
+
 const product = props.data
 const keyWord = ref('')
 
 const search = () => {
+    console.log(product.filter(i => i.title.includes(keyWord.value)));
+    
  emit('searchResult', product.filter(i => i.title.includes(keyWord.value)))
 }
 </script>
